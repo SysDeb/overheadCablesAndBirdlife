@@ -26,8 +26,10 @@
   </v-container>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'UpdateDiagnosisPage',
   /**
    * asyncData(): Method that gather data before page be created
@@ -48,5 +50,5 @@ export default {
       miniVariant: true, // small drawer when opening by default
     }
   },
-}
+})
 </script>

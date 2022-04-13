@@ -20,9 +20,11 @@
 </template>
 
 
-<script>
+<script lang='ts'>
 import { mapGetters } from 'vuex'
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'EquipmentDisplay',
 
   data() {
@@ -61,7 +63,7 @@ export default {
     lineOpData: 'cablesStore/lineOpData',
   }),
   methods: {
-    source(choice) {
+    source(choice: string) {
       switch (choice) {
         case 'both':
           this.selectedData = this.opData
@@ -77,5 +79,5 @@ export default {
       }
     },
   },
-}
+})
 </script>

@@ -23,8 +23,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'SupportDetailPage',
   /**
    * asyncData(): Method that gather data before page be created
@@ -44,5 +46,5 @@ export default {
       miniVariant: true, // wide drawer when opening by default
     }
   },
-}
+})
 </script>

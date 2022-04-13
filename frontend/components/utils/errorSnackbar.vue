@@ -10,9 +10,11 @@
   </v-snackbar>
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue'
 import { mapGetters } from 'vuex'
-export default {
+
+export default Vue.extend({
   data() {
     return {
       display: false,
@@ -34,5 +36,5 @@ export default {
       this.display = true
     },
   },
-}
+})
 </script>

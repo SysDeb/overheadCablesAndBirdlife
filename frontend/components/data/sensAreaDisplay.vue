@@ -7,9 +7,11 @@
   ></v-data-table>
 </template>
 
-<script>
+<script lang='ts'>
 import { mapGetters } from 'vuex'
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'SensAreaDisplay',
   data() {
     return {
@@ -32,5 +34,5 @@ export default {
   },
   /** Gather Sensitive Area data from Nuxt Store */
   computed: mapGetters({ SADataFeatures: 'saStore/SADataFeatures' }),
-}
+})
 </script>

@@ -9,9 +9,10 @@
   ></v-data-table> -->
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue'
 // import { FeatureCollection } from 'geojson'
-export default {
+export default Vue.extend({
   name: 'MortalityDisplay',
   // props: { mortalityData: FeatureCollection },
 
@@ -28,5 +29,5 @@ export default {
       ],
     }
   },
-}
+})
 </script>

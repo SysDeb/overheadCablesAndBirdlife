@@ -17,9 +17,11 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import { mapGetters } from 'vuex'
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'InfrastructureDisplay',
 
   data() {
@@ -55,7 +57,7 @@ export default {
     lineDataFeatures: 'cablesStore/lineDataFeatures',
   }),
   methods: {
-    source(choice) {
+    source(choice: string) {
       switch (choice) {
         case 'both':
           this.selectedData = this.infstrDataFeatures
@@ -70,7 +72,7 @@ export default {
         // TODO raise an exception and handle it or display message to user
       }
     },
-    showDetail(evt) {
+    showDetail(evt: any) {
       if (evt.resourcetype === 'Point') {
         this.$router.push(`/supports/${evt.properties.id}`)
       } else if (evt.resourcetype === 'Line') {
@@ -78,5 +80,5 @@ export default {
       }
     },
   },
-}
+})
 </script>

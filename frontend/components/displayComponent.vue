@@ -22,7 +22,7 @@
     </v-tabs>
   </div>
 </template>
-<script>
+<script lang='ts'>
 export default {
   name: 'DisplayComponent',
 }

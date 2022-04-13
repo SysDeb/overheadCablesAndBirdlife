@@ -22,8 +22,10 @@
   </v-row>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'WelcomeComponent',
   auth: false,
   data() {
@@ -40,5 +42,5 @@ export default {
       this.partners = partners
     },
   },
-}
+})
 </script>

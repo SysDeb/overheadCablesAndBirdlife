@@ -46,8 +46,10 @@
   </v-container>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'ViewComponent',
   data() {
     return {
@@ -81,5 +83,5 @@ export default {
       return this.$auth.loggedIn ? this.drawer_opened : false
     },
   },
-}
+})
 </script>

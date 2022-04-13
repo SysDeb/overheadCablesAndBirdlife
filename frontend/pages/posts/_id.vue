@@ -29,16 +29,19 @@
   </v-container>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'Post',
   auth: false,
   async asyncData({ $axios, params }) {
     const post = await $axios.$get(`/custom-content/news/${params.id}`)
     return { post }
   },
-}
+})
 </script>
+
 <style scoped>
 #post .v-btn-back {
   bottom: 0;

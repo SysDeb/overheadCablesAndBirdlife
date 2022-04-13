@@ -26,8 +26,10 @@
   </v-container>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'LinePage',
   data() {
     return {
@@ -35,5 +37,5 @@ export default {
       miniVariant: true, // small drawer when opening by default
     }
   },
-}
+})
 </script>

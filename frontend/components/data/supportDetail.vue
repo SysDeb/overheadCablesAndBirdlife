@@ -69,38 +69,43 @@
   ></v-card>
 </template>
 
+
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
 import { Feature } from 'geojson'
+import Vue, { PropOptions } from 'vue'
 
 export default Vue.extend({
   name: 'SupportDetailComponent',
   props: { data: { type: Object, default: null } as PropOptions<Feature> },
+
   data() {
+    let lastDiag: Feature | null = null
+    let lastOp: Feature | null = null
+    let previousActions: Array<Feature> | null = []
+    let update: boolean = false
+
     return {
-      lastDiag: null,
-      lastOp: null,
-      previousActions: [],
-      update: false,
+      lastDiag,
+      lastOp,
+      previousActions,
+      update,
     }
   },
   created() {
-    if (this.data.properties) {
-      // Gather last Diagnosis (field last=True)
-      this.lastDiag = this.data.properties.actions_infrastructure.find(
-        (action: { resourcetype: string; last: boolean }) =>
-          action.resourcetype === 'Diagnosis' && action.last
-      )
-      // Gather last Operation (field last=True)
-      this.lastOp = this.data.properties.actions_infrastructure.find(
-        (action: { resourcetype: string; last: boolean }) =>
-          action.resourcetype === 'Operation' && action.last
-      )
-      // Gather all older actions (Diagnosis and Operations) with field last=False
-      this.previousActions = this.data.properties.actions_infrastructure.filter(
-        (action: { last: boolean }) => !action.last
-      )
-    }
+    // Gather last Diagnosis (field last=True)
+    this.lastDiag = this.data.properties?.actions_infrastructure.find(
+      (action: { resourcetype: string; last: boolean }) =>
+        action.resourcetype === 'Diagnosis' && action.last
+    )
+    // Gather last Operation (field last=True)
+    this.lastOp = this.data.properties?.actions_infrastructure.find(
+      (action: { resourcetype: string; last: boolean }) =>
+        action.resourcetype === 'Operation' && action.last
+    )
+    // Gather all older actions (Diagnosis and Operations) with field last=False
+    this.previousActions = this.data.properties?.actions_infrastructure.filter(
+      (action: { last: boolean }) => !action.last
+    )
   },
 })
 </script>

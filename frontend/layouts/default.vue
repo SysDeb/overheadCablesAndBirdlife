@@ -50,8 +50,10 @@
   </v-app>
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'DefaultLayout',
   data() {
     return {
@@ -80,5 +82,5 @@ export default {
       this.$auth.logout()
     },
   },
-}
+})
 </script>

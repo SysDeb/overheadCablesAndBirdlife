@@ -1,12 +1,15 @@
+import { latLng } from 'geojson'
+
 /**
  * Nuxt Point module: coordinatesStore to handle creation of new Point
  */
 export const state = () => ({
-  newPointCoord: {
-    lat: { type: Number, default: null },
-    lng: { type: Number, default: null },
-    default: null,
-  },
+  // newPointCoord: {
+  //   lat: { type: Number, default: null },
+  //   lng: { type: Number, default: null },
+  //   default: null,
+  // },
+  newPointCoord: { type: latLng, default: null },
   newLineCoord: [],
 })
 

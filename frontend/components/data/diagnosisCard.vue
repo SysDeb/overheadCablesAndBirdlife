@@ -5,13 +5,13 @@
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon @click="newDiag">
+          <v-btn icon v-bind="attrs" v-on="on" @click="newDiag">
             <v-icon v-if="diagnosis.last" color="green"
               >mdi-eye-plus-outline</v-icon
             >
           </v-btn>
         </template>
-        <span>Ajouter un dignostic</span>
+        <span>Ajouter un diagnostic {{ tata }}</span>
       </v-tooltip>
       <v-btn icon @click="updateDiag">
         <v-icon color="orange">mdi-pencil</v-icon>
@@ -91,6 +91,43 @@
 </template>
 
 <script lang="ts">
+import { Feature } from 'geojson'
+import Vue, { PropOptions } from 'vue'
+
+export default Vue.extend({
+  name: 'DiagnosisCardComponent',
+  props: { diagnosis: { type: Object, default: null } as PropOptions<Feature> },
+  data() {
+    return {
+      newSupport: this.$route.query.newSupport,
+      riskColors: {
+        RISK_L: 'light-blue',
+        RISK_M: 'yellow',
+        RISK_H: 'red lighten-1 white--text',
+      },
+    }
+  },
+  methods: {
+    newDiag() {
+      this.$router.push({
+        path: `/supports/${this.diagnosis.properties?.infrastructure}/diagnosis/${this.diagnosis.id}`,
+        query: { modifyDiag: 'false' },
+      })
+    },
+    updateDiag() {
+      this.$router.push({
+        path: `/supports/${this.diagnosis.properties?.infrastructure}/diagnosis/${this.diagnosis.id}`,
+        query: { modifyDiag: 'true' },
+      })
+    },
+    notImplementedYet() {
+      return null
+    },
+  },
+})
+</script>
+
+<!-- <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -127,4 +164,4 @@ export default Vue.extend({
     },
   },
 })
-</script>
+</script> -->
